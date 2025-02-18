@@ -16,21 +16,20 @@ type State = {
   error: string;
   searchTerm: string;
 };
-
 type Action =
-  | { type: "FETCH_SUCCESS"; payload: User[] }
+  | { type: "FETCH_SUCCESS" ; payload: User[] }
   | { type: "FETCH_ERROR"; payload: string }
-  | { type: "SET_SEARCH_TERM"; payload: string };
+  | { type: "SET_SEARCH_TERM";  payload: string };
 
 const initialState: State = {
-  users: [],
+  users: [] ,
   loading: true,
   error: "",
   searchTerm: "",
 };
 
 const reducer = (state: State, action: Action): State => {
-  switch (action.type) {
+  switch ( action.type) {
     case "FETCH_SUCCESS":
       return { ...state, users: action.payload, loading: false };
     case "FETCH_ERROR":
@@ -43,13 +42,12 @@ const reducer = (state: State, action: Action): State => {
 };
 
 export default function UserSearch() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer( reducer  , initialState);
 
   useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => dispatch({ type: "FETCH_SUCCESS", payload: res.data }))
-      .catch((err) => dispatch({ type: "FETCH_ERROR", payload: err.message }));
+    axios.get( "https://jsonplaceholder.typicode.com/users")
+      .then( (res) => dispatch ({  type: "FETCH_SUCCESS",  payload: res.data }))
+      .catch( (err)=> dispatch({ type: "FETCH_ERROR",  payload: err.message }));
   }, []);
 
   return (

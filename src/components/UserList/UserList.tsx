@@ -8,22 +8,24 @@ type User = {
   address: { city: string };
 };
 
+
 type Props = {
   users: User[];
   searchTerm: string;
 };
 
 export default function UserList({ users, searchTerm }: Props) {
-  const filteredUsers = useMemo(() => {
+  const filteredUsers = useMemo(()=> 
+    {
     return users.filter((user) =>
-      user.name.toLowerCase().includes(searchTerm.toLowerCase())
+      user.name.includes(searchTerm)
     );
   }, [users, searchTerm]);
 
   return (
     <ul className="mt-4">
       {filteredUsers.map((user) => (
-        <UserItem key={user.id} user={user} />
+        <UserItem  key={user.id} user={user} />
       ))}
     </ul>
   );
