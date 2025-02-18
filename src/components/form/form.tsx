@@ -14,7 +14,8 @@ export default function App() {
     }}, []);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); 
+
+    e.preventDefault(e); 
     prevInputRef.current = inputValue; 
     setInputValue(""); 
   };
