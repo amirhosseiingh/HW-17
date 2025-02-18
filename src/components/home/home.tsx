@@ -6,7 +6,7 @@ export default function EvenSumCalculator() {
 
   const evenSum = useMemo(() => {
     let sum = 0;
-    for (let i = 0; i < numbers.length; i++) {
+    for (let i = 0 ; i < numbers.length ; i++) {
       if (numbers[i] % 2 === 0) {
         sum += numbers[i];
       }
@@ -15,7 +15,7 @@ export default function EvenSumCalculator() {
   }, [numbers]);
 
   const addNumber = () => {
-    if (!isNaN(Number(newNumber)) && newNumber.trim() !== "") {
+    if (!isNaN(Number(newNumber)) && newNumber !== "") {
       setNumbers((prevNumbers) => [...prevNumbers, Number(newNumber)]);
       setNewNumber("");
     }
