@@ -11,16 +11,19 @@ type Action =
   | { type: "reset" }
   | { type: "setStep"; payload: number };
 
-const initialState: State = { count: 0, step: 1 };
+const IState: State = { count: 0, step: 1 };
 
 const reducer = (state: State, action: Action): State => {
+
   switch (action.type) {
+
     case "increment":
-      return { ...state,  count: state.count + state.step };
+      return { ...state,  count: state.count + state.step};
     case "decrement":
       return { ...state, count: state.count - state.step };
     case "reset":
-      return initialState;
+      return IState;
+
     case "setStep":
       return { ...state, step: action.payload };
     default:
@@ -29,7 +32,7 @@ const reducer = (state: State, action: Action): State => {
 };
 
 export default function Counter() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, IState);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
